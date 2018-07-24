@@ -53,4 +53,10 @@ public class EmployeeController {
         System.out.println(employee.getAge());
         System.out.println(employee.getName());
     }
+
+    @DeleteMapping("employees/{id}")
+    public void deleteEmployee(@PathVariable int id){
+        employeeService.deleteEmployee(id);
+        System.out.println(id);
+    }
 }

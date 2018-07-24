@@ -75,4 +75,8 @@ public class EmployeeService {
         employeeList.remove(employeeOri);
         employeeList.add(employee);
     }
+
+    public void deleteEmployee(int id) {
+        employeeList.remove(id-1);
+    }
 }

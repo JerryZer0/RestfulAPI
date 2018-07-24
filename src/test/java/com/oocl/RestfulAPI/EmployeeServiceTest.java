@@ -95,4 +95,19 @@ public class EmployeeServiceTest {
         employee3.setId(2);
         assertThat(employeeService.getEmployee(2),is(employee3));
     }
+
+    @Test
+    public void should_delete_the_employee_info_with_delete_3(){
+        Employee employee1 = new Employee(1,"小明",20,"male");
+        Employee employee2 = new Employee(2,"小红",18,"female");
+        Employee employee3 = new Employee(3,"小蓝",18,"male");
+        employeeList.add(employee1);
+        employeeList.add(employee2);
+        employeeList.add(employee3);
+
+        EmployeeService employeeService = new EmployeeService(employeeList);
+        employeeService.deleteEmployee(3);
+        employeeList.remove(employee3);
+        assertThat(employeeService.getEmployeeList(),is(employeeList));
+    }
 }
