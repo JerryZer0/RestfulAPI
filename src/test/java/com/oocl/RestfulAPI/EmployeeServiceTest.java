@@ -48,9 +48,23 @@ public class EmployeeServiceTest {
         employeeList.add(employee3);
 
         EmployeeService employeeService = new EmployeeService(employeeList);
-
         employeeList.remove(employee2);
 
         assertThat(employeeService.getEmployeeListByGender("male"),is(employeeList));
+    }
+
+    @Test
+    public void should_return_the_first_2_employees_with_1_page_and_size_is_2(){
+        Employee employee1 = new Employee(1,"小明",20,"male");
+        Employee employee2 = new Employee(2,"小红",18,"female");
+        Employee employee3 = new Employee(3,"小红",18,"male");
+        employeeList.add(employee1);
+        employeeList.add(employee2);
+        employeeList.add(employee3);
+
+        EmployeeService employeeService = new EmployeeService(employeeList);
+        employeeList.remove(employee3);
+
+        assertThat(employeeService.getEmployeeListInPage(1,2),is(employeeList));
     }
 }

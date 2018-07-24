@@ -9,15 +9,16 @@ import java.util.List;
 public class EmployeeService {
 
     List<Employee> employeeList = new ArrayList<>();
-    Employee employee1 = new Employee(1,"小明",20,"male");
-    Employee employee2 = new Employee(2,"小红",18,"female");
-    Employee employee3 = new Employee(3,"小红",18,"male");
+    Employee employee1 = new Employee(1, "小明", 20, "male");
+    Employee employee2 = new Employee(2, "小红", 18, "female");
+    Employee employee3 = new Employee(3, "小红", 18, "male");
+    Employee employee4 = new Employee(4, "阿哥", 21, "male");
 
-    public EmployeeService(List<Employee> employeeList){
+    public EmployeeService(List<Employee> employeeList) {
         this.employeeList = employeeList;
     }
 
-    public EmployeeService(){
+    public EmployeeService() {
         employeeList.add(employee1);
         employeeList.add(employee2);
         employeeList.add(employee3);
@@ -28,19 +29,29 @@ public class EmployeeService {
     }
 
     public Employee getEmployee(int id) {
-        Employee e = employeeList.get(id-1);
+        Employee e = employeeList.get(id - 1);
         return e;
     }
 
     public List<Employee> getEmployeeListByGender(String gender) {
         int size = employeeList.size();
         List<Employee> getByGender = new ArrayList<>();
-        for(int i=0;i<size;i++){
-            if(employeeList.get(i).getGender().equals(gender)){
+        for (int i = 0; i < size; i++) {
+            if (employeeList.get(i).getGender().equals(gender)) {
                 getByGender.add(employeeList.get(i));
             }
             System.out.println(size);
         }
         return getByGender;
+    }
+
+    public List<Employee> getEmployeeListInPage(int pageNumber, int pageSize) {
+        int size = employeeList.size();
+        int begin = (pageNumber - 1) * pageSize;
+        List<Employee> getByPage = new ArrayList<>();
+        for (int i = begin; i < size && ((i - begin) < pageSize); i++) {
+            getByPage.add(employeeList.get(i));
+        }
+        return getByPage;
     }
 }
