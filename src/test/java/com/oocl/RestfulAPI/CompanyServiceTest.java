@@ -60,4 +60,23 @@ public class CompanyServiceTest {
         CompanyService companyService = new CompanyService(companies);
         assertThat(companyService.getEmployeesByCompanyId(1),is(employeeList));
     }
+
+    @Test
+    public void should_return_the_first_2_companies_with_1_page_and_size_is_2(){
+
+        employeeList.add(employee1);
+        employeeList.add(employee2);
+
+        Company company1 = new Company(1,"nishu",employeeList);
+        Company company2 = new Company(2,"shuia",employeeList);
+        Company company3 = new Company(3,"xixi",employeeList);
+        companies.add(company1);
+        companies.add(company2);
+        companies.add(company3);
+
+        CompanyService companyService = new CompanyService(companies);
+        companies.remove(company3);
+
+        assertThat(companyService.getCompaniesInPage(1,2),is(companies));
+    }
 }

@@ -4,6 +4,7 @@ import com.oocl.RestfulAPI.EmployeesAPI.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -30,5 +31,11 @@ public class CompanyController {
     public List<Employee> getEmployeesByCompanyId(@PathVariable int id) {
         List<Employee> employeeList = companyService.getEmployeesByCompanyId(id);
         return employeeList;
+    }
+
+    @PostMapping("companies/page/{pageNumber}/pageSize/{pageSize}")
+    public List<Company> getCompaniesByPage(@PathVariable("pageNumber") int pageNumber, @PathVariable("pageSize") int pageSize) {
+        List<Company> Companies = companyService.getCompaniesInPage(pageNumber,pageSize);
+        return Companies;
     }
 }

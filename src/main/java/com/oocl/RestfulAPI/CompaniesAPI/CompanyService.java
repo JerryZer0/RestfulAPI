@@ -23,8 +23,10 @@ public class CompanyService {
         employeeList.add(employee2);
         Company company1 = new Company(1,"haha",employeeList);
         Company company2 = new Company(2,"heh",employeeList);
+        Company company3 = new Company(2,"xixi",employeeList);
         companies.add(company1);
         companies.add(company2);
+        companies.add(company3);
     }
 
     public List<Company> getCompanyList() {
@@ -39,5 +41,15 @@ public class CompanyService {
     public List<Employee> getEmployeesByCompanyId(int id) {
         List<Employee> employeeList = getCompany(id).getEmployeeList();
         return employeeList;
+    }
+
+    public List<Company> getCompaniesInPage(int pageNumber, int pageSize) {
+        int size = companies.size();
+        int begin = (pageNumber - 1) * pageSize;
+        List<Company> getByPage = new ArrayList<>();
+        for (int i = begin; i < size && ((i - begin) < pageSize); i++) {
+            getByPage.add(companies.get(i));
+        }
+        return getByPage;
     }
 }
