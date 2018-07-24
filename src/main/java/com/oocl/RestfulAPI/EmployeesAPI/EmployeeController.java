@@ -46,4 +46,11 @@ public class EmployeeController {
         employeeService.add(employee);
         System.out.println(employee.getName());
     }
+
+    @PutMapping("employees/{id}")
+    public void updateEmployee(@PathVariable int id,@RequestBody Employee employee){
+        employeeService.updateEmployee(id,employee);
+        System.out.println(employee.getAge());
+        System.out.println(employee.getName());
+    }
 }

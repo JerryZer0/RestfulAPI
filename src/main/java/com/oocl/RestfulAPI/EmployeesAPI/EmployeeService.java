@@ -59,4 +59,20 @@ public class EmployeeService {
     public void add(Employee employee) {
         employeeList.add(employee);
     }
+
+    public void updateEmployee(int id, Employee employee) {
+        Employee employeeOri = getEmployee(id);
+        if (employee.getAge() == 0) {
+            employee.setAge(employeeOri.getAge());
+        }
+        if (employee.getName() == null) {
+            employee.setName(employeeOri.getName());
+        }
+        if (employee.getGender() == null) {
+            employee.setGender(employeeOri.getGender());
+        }
+        employee.setId(employeeOri.getId());
+        employeeList.remove(employeeOri);
+        employeeList.add(employee);
+    }
 }
