@@ -2,10 +2,7 @@ package com.oocl.RestfulAPI.CompaniesAPI;
 
 import com.oocl.RestfulAPI.EmployeesAPI.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,9 +30,15 @@ public class CompanyController {
         return employeeList;
     }
 
-    @PostMapping("companies/page/{pageNumber}/pageSize/{pageSize}")
+    @GetMapping("companies/page/{pageNumber}/pageSize/{pageSize}")
     public List<Company> getCompaniesByPage(@PathVariable("pageNumber") int pageNumber, @PathVariable("pageSize") int pageSize) {
         List<Company> Companies = companyService.getCompaniesInPage(pageNumber,pageSize);
         return Companies;
+    }
+
+    @PostMapping("companies")
+    public void addCopany(@RequestBody Company company){
+        companyService.add(company);
+        System.out.println(company.getName());
     }
 }

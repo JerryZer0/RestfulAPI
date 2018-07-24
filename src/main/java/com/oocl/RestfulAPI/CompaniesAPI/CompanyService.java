@@ -52,4 +52,8 @@ public class CompanyService {
         }
         return getByPage;
     }
+
+    public void add(Company company) {
+        companies.add(company);
+    }
 }

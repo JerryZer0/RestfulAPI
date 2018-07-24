@@ -79,4 +79,19 @@ public class CompanyServiceTest {
 
         assertThat(companyService.getCompaniesInPage(1,2),is(companies));
     }
+
+    @Test
+    public void should_return_should_return_the_3_companies_with_add_3(){
+
+        Company company1 = new Company(1,"nishu",employeeList);
+        Company company2 = new Company(2,"shuia",employeeList);
+        Company company3 = new Company(3,"xixi",employeeList);
+        companies.add(company1);
+        companies.add(company2);
+
+        CompanyService companyService = new CompanyService(companies);
+        companies.add(company3);
+
+        assertThat(companyService.getCompanyList(),is(companies));
+    }
 }
