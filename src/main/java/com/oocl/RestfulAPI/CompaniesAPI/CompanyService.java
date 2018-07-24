@@ -66,4 +66,8 @@ public class CompanyService {
         companies.remove(companyOri);
         companies.add(company);
     }
+
+    public void deleteCompany(int id) {
+        companies.remove(id-1);
+    }
 }

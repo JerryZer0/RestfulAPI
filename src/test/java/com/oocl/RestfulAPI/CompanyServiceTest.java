@@ -109,4 +109,18 @@ public class CompanyServiceTest {
         company3.setId(2);
         assertThat(companyService.getCompany(2),is(company3));
     }
+
+    @Test
+    public void should_delete_the_company_info_with_delete_3(){
+        Company company1 = new Company(1,"nishu",employeeList);
+        Company company2 = new Company(2,"shuia",employeeList);
+        Company company3 = new Company(0,"wogaile",employeeList);
+        companies.add(company1);
+        companies.add(company2);
+        companies.add(company3);
+        CompanyService companyService = new CompanyService(companies);
+        companyService.deleteCompany(3);
+        companies.remove(company3);
+        assertThat(companyService.getCompanyList(),is(companies));
+    }
 }
