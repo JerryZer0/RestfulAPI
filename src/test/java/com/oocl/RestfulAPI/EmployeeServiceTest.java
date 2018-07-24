@@ -67,4 +67,18 @@ public class EmployeeServiceTest {
 
         assertThat(employeeService.getEmployeeListInPage(1,2),is(employeeList));
     }
+
+    @Test
+    public void should_return_the_3_employees_with_add_3(){
+        Employee employee1 = new Employee(1,"小明",20,"male");
+        Employee employee2 = new Employee(2,"小红",18,"female");
+        Employee employee3 = new Employee(3,"小红",18,"male");
+        employeeList.add(employee1);
+        employeeList.add(employee2);
+
+        EmployeeService employeeService = new EmployeeService(employeeList);
+        employeeService.add(employee3);
+        employeeList.add(employee3);
+        assertThat(employeeService.getEmployeeList(),is(employeeList));
+    }
 }

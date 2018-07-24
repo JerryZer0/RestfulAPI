@@ -22,6 +22,7 @@ public class EmployeeService {
         employeeList.add(employee1);
         employeeList.add(employee2);
         employeeList.add(employee3);
+        employeeList.add(employee4);
     }
 
     public List<Employee> getEmployeeList() {
@@ -53,5 +54,9 @@ public class EmployeeService {
             getByPage.add(employeeList.get(i));
         }
         return getByPage;
+    }
+
+    public void add(Employee employee) {
+        employeeList.add(employee);
     }
 }

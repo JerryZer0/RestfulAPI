@@ -1,10 +1,7 @@
 package com.oocl.RestfulAPI.EmployeesAPI;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,5 +39,11 @@ public class EmployeeController {
     public List<Employee> getEmployeesByFemale() {
         List<Employee> employeeList = employeeService.getEmployeeListByGender("female");
         return employeeList;
+    }
+
+    @PostMapping("employees")
+    public void addEmployee(@RequestBody Employee employee){
+        employeeService.add(employee);
+        System.out.println(employee.getName());
     }
 }
