@@ -25,4 +25,18 @@ public class EmployeeController {
         Employee employee = employeeService.getEmployee(id);
         return employee;
     }
+
+//    @GetMapping("employees/page/1/pageSize/5")
+//    public List<Employee> getEmployeeByPage(@PathVariable int page,)
+
+    @GetMapping("employees/male")
+    public List<Employee> getEmployeesByMale(){
+        List <Employee> employeeList = employeeService.getEmployeeListByGender("male");
+        return employeeList;
+    }
+    @GetMapping("employees/female")
+    public List<Employee> getEmployeesByFemale(){
+        List <Employee> employeeList = employeeService.getEmployeeListByGender("female");
+        return employeeList;
+    }
 }
