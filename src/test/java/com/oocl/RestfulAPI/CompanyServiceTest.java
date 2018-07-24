@@ -94,4 +94,19 @@ public class CompanyServiceTest {
 
         assertThat(companyService.getCompanyList(),is(companies));
     }
+
+    @Test
+    public void should_return_the_new_companies_info_with_update_1(){
+
+        Company company1 = new Company(1,"nishu",employeeList);
+        Company company2 = new Company(2,"shuia",employeeList);
+        Company company3 = new Company(0,"wogaile",employeeList);
+        companies.add(company1);
+        companies.add(company2);
+
+        CompanyService companyService = new CompanyService(companies);
+        companyService.updateCompany(2,company3);
+        company3.setId(2);
+        assertThat(companyService.getCompany(2),is(company3));
+    }
 }

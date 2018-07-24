@@ -56,4 +56,14 @@ public class CompanyService {
     public void add(Company company) {
         companies.add(company);
     }
+
+    public void updateCompany(int id, Company company) {
+        Company companyOri = getCompany(id);
+        if (company.getName() == null) {
+            company.setName(companyOri.getName());
+        }
+        company.setId(companyOri.getId());
+        companies.remove(companyOri);
+        companies.add(company);
+    }
 }
