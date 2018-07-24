@@ -30,4 +30,9 @@ public class CompanyService {
     public List<Company> getCompanyList() {
         return this.companies;
     }
+
+    public Company getCompany(int id) {
+        Company company = companies.get(id-1);
+        return company;
+    }
 }

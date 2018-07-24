@@ -24,15 +24,26 @@ public class CompanyServiceTest {
 
         employeeList.add(employee1);
         employeeList.add(employee2);
-
         Company company1 = new Company(1,"nishu",employeeList);
         Company company2 = new Company(2,"shuia",employeeList);
-
         companies.add(company1);
         companies.add(company2);
 
         CompanyService companyService = new CompanyService(companies);
-
         assertThat(companyService.getCompanyList(),is(companies));
+    }
+
+    @Test
+    public void should_return_the_company_with_id_is_1(){
+
+        employeeList.add(employee1);
+        employeeList.add(employee2);
+        Company company1 = new Company(1,"nishu",employeeList);
+        Company company2 = new Company(2,"shuia",employeeList);
+        companies.add(company1);
+        companies.add(company2);
+
+        CompanyService companyService = new CompanyService(companies);
+        assertThat(companyService.getCompany(1),is(company1));
     }
 }

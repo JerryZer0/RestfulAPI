@@ -28,7 +28,7 @@ public class EmployeeServiceTest {
     }
 
     @Test
-    public void should_return_the_employee_with_id_is_1_list(){
+    public void should_return_the_employee_with_id_is_1(){
         Employee employee1 = new Employee(1,"小明",20,"male");
         Employee employee2 = new Employee(2,"小红",18,"female");
         employeeList.add(employee1);
