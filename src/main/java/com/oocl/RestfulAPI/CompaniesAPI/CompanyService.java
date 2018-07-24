@@ -35,4 +35,9 @@ public class CompanyService {
         Company company = companies.get(id-1);
         return company;
     }
+
+    public List<Employee> getEmployeesByCompanyId(int id) {
+        List<Employee> employeeList = getCompany(id).getEmployeeList();
+        return employeeList;
+    }
 }

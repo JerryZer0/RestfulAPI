@@ -25,4 +25,10 @@ public class CompanyController {
         Company company = companyService.getCompany(id);
         return company;
     }
+
+    @GetMapping("companies/{id}/employees")
+    public List<Employee> getEmployeesByCompanyId(@PathVariable int id) {
+        List<Employee> employeeList = companyService.getEmployeesByCompanyId(id);
+        return employeeList;
+    }
 }

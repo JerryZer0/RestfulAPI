@@ -46,4 +46,18 @@ public class CompanyServiceTest {
         CompanyService companyService = new CompanyService(companies);
         assertThat(companyService.getCompany(1),is(company1));
     }
+
+    @Test
+    public void should_return_the_employees_of_company_1(){
+
+        employeeList.add(employee1);
+        employeeList.add(employee2);
+        Company company1 = new Company(1,"nishu",employeeList);
+        Company company2 = new Company(2,"shuia",employeeList);
+        companies.add(company1);
+        companies.add(company2);
+
+        CompanyService companyService = new CompanyService(companies);
+        assertThat(companyService.getEmployeesByCompanyId(1),is(employeeList));
+    }
 }
