@@ -17,26 +17,30 @@ public class EmployeeList {
     public List<Employee> getAllEmployees(){
         return employees;
     }
-    public void setEmployee(List<Employee> employees){
+    public void setEmployees(List<Employee> employees){
         this.employees = employees;
     }
 
     public Employee findById(int id){
-        Employee employee = employees.get(id-1);
+        int indexId = id-1;
+        Employee employee = employees.get(indexId);
         return employee;
     }
 
     public void update(int id,Employee employee){
-        employees.remove(id);
+        employees.remove(id-1);
         employee.setId(id);
         employees.add(employee);
     }
 
-    public void delete(int id){
-        employees.remove(id);
+    public void remove(int id){
+        employees.remove(id-1);
     }
 
-    public void delete(Employee employee){
+    public void remove(Employee employee){
         employees.remove(employee);
     }
+
+    public int getContains(){
+        return employees.size();}
 }
